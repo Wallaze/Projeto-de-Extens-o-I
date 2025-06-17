@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança Digital: Proteja-se Online!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Variáveis de Cores */
+        :root {
+            --cor-principal: #28a745; /* Verde Escuro */
+            --cor-secundaria: #218838; /* Verde um pouco mais escuro */
+            --cor-texto-claro: #fff;
+            --cor-texto-escuro: #333;
+            --cor-fundo-claro: #f4f4f4;
+            --cor-fundo-neutro: #e9ecef;
+            --cor-link: #1e7e34; /* Verde para links */
+        }
+
+        /* Estilos CSS internos */
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cor-fundo-claro);
+            color: var(--cor-texto-escuro);
+        }
+        header {
+            background-color: var(--cor-principal);
+            color: var(--cor-texto-claro);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em; /* Título maior */
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para o título */
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            background-color: var(--cor-secundaria);
+            margin: 0;
+            padding: 10px 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            padding: 10px 0;
+            display: inline-block;
+            font-weight: 600;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            width: 85%; /* Um pouco mais largo */
+            max-width: 960px; /* Limite de largura para desktops */
+            margin: auto;
+            overflow: hidden;
+            padding: 30px 0; /* Mais padding */
+        }
+        section {
+            background-color: var(--cor-texto-claro);
+            padding: 30px; /* Mais padding */
+            margin-bottom: 25px; /* Mais margem */
+            border-radius: 10px; /* Bordas mais arredondadas */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra mais pronunciada */
+        }
+        h2, h3 {
+            color: var(--cor-principal);
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--cor-fundo-claro); /* Linha divisória */
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.5em;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 25px; /* Mais espaço */
+        }
+        ul li {
+            margin-bottom: 8px; /* Espaço entre itens de lista */
+        }
+        a {
+            color: var(--cor-link);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            display: inline-block;
+            background-color: var(--cor-link);
+            color: var(--cor-texto-claro);
+            padding: 12px 25px; /* Botões maiores */
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: background-color 0.3s ease; /* Transição suave no hover */
+        }
+        .button:hover {
+            background-color: var(--cor-principal);
+        }
+        .feedback-form {
+            background-color: var(--cor-fundo-neutro);
+            padding: 25px;
+            border-radius: 8px;
+        }
+        .feedback-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--cor-texto-escuro);
+        }
+        .feedback-form input[type="text"],
+        .feedback-form input[type="email"],
+        .feedback-form textarea,
+        .feedback-form select {
+            width: calc(100% - 20px); /* Ajuste para padding */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .feedback-form button {
+            background-color: var(--cor-principal);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .feedback-form button:hover {
+            background-color: var(--cor-secundaria);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--cor-principal);
+            color: var(--cor-texto-claro);
+            font-size: 0.9em;
+        }
+
+        /* Estilos específicos para o quiz */
+        .quiz-container {
+            background-color: var(--cor-fundo-neutro);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .quiz-question {
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        .quiz-options label:hover {
+            background-color: #e2e6ea;
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .quiz-buttons button {
+            margin-right: 10px;
+            margin-top: 15px;
+        }
+        .quiz-result {
+            margin-top: 20px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .quiz-result.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .quiz-result.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .quiz-result.neutral {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><span style="color: #FFD700;">Segurança Digital:</span> Proteja-se Online!</h1>
+        <p>Um guia completo para navegar na internet com confiança e conhecimento.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#sobre">Sobre o Projeto</a></li>
+            <li><a href="#diagnosticos">Entendendo os Desafios</a></li>
+            <li><a href="#materiais">Conteúdo Educativo</a></li>
+            <li><a href="#quiz-interativo">Quiz Interativo</a></li>
+            <li><a href="#pesquisas">Sua Participação</a></li>
+            <li><a href="#duvidas">Dúvidas Comuns</a></li>
+            <li><a href="#links-uteis">Links Úteis</a></li>
+            <li><a href="#feedback">Fale Conosco</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="sobre">
+            <h2>Bem-vindo(a) ao nosso portal!</h2>
+            <p>Este espaço foi criado para capacitar você a navegar com mais segurança e confiança no mundo digital. Nosso objetivo é combater a desinformação e os golpes online, fornecendo informações claras, acessíveis e práticas para todos.</p>
+            <h3>Sobre o Projeto "Segurança Digital na Baixada Fluminense"</h3>
+            <p>Este projeto de extensão universitária nasceu da percepção de que a segurança digital é uma necessidade crescente, especialmente em comunidades com desafios de acesso à informação e alfabetização digital. Embora nosso foco inicial tenha sido a Baixada Fluminense, região que inspirou a iniciativa devido aos relatos de amigos, familiares e comerciantes que enfrentaram golpes digitais, as informações e ferramentas aqui apresentadas são universais e valiosas para qualquer pessoa conectada.</p>
+            <p>Nossa missão é simples: tornar o ambiente online mais seguro para todos, oferecendo conhecimento que protege.</p>
+        </section>
+
+        <section id="diagnosticos">
+            <h2>Entendendo os Desafios: O Cenário Digital Atual</h2>
+            <p>Através de nossas pesquisas, identificamos padrões comuns de vulnerabilidade que afetam muitos usuários:</p>
+            <ul>
+                <li><strong>75% dos participantes já receberam mensagens suspeitas</strong>, como SMS, e-mails ou mensagens de WhatsApp com conteúdo duvidoso.</li>
+                <li><strong>Mais da metade afirmou que já quase caiu em algum tipo de golpe online</strong>, demonstrando a prevalência e a eficácia das táticas dos criminosos.</li>
+                <li>Existe um <strong>desconhecimento generalizado sobre recursos básicos de segurança</strong>, como a verificação em duas etapas, e sobre boas práticas para identificar links e notícias falsas.</li>
+            </ul>
+            <p>Esses dados reforçam a importância de disseminar conhecimento prático e acessível para que todos possam adotar comportamentos mais seguros online.</p>
+        </section>
+
+        <section id="materiais">
+            <h2>Conteúdo Educativo: Proteja-se com Conhecimento!</h2>
+            <p>Com base nos desafios identificados, criamos materiais educativos digitais com uma linguagem simples e objetiva, desenvolvidos para ajudar você a se proteger:</p>
+            <h3>Tópicos Abordados em Nossos Guias e Dicas:</h3>
+            <ul>
+                <li>**Golpes no WhatsApp e Redes Sociais:** Aprenda a identificar as táticas mais comuns e como se defender.</li>
+                <li>**Verificação de Links Suspeitos:** Saiba como analisar um link antes de clicar e evitar armadilhas.</li>
+                <li>**Verificação em Duas Etapas (Autenticação de Dois Fatores):** Entenda o que é, por que é crucial e como ativá-la em suas contas.</li>
+                <li>**Combatendo a Desinformação (Fake News):** Dicas práticas para reconhecer notícias falsas e evitar compartilhá-las.</li>
+            </ul>
+            <p>Nosso objetivo é transformar informações complexas em conhecimento fácil de usar no seu dia a dia.</p>
+        </section>
+
+        <section id="quiz-interativo">
+            <h2>Teste Seus Conhecimentos com Nosso Quiz!</h2>
+            <p>Coloque seus conhecimentos em prática com nosso quiz interativo. São perguntas rápidas para você testar sua percepção sobre segurança digital e aprender ainda mais!</p>
+            <div class="quiz-container">
+                <div id="quiz-questions">
+                    </div>
+                <div class="quiz-buttons">
+                    <button class="button" onclick="checkQuizAnswers()">Verificar Respostas</button>
+                    <button class="button" onclick="loadQuiz()">Nova Rodada</button>
+                </div>
+                <div id="quiz-results" class="quiz-result"></div>
+            </div>
+            <p style="margin-top: 20px;">Para um quiz mais abrangente e com registro de respostas, participe também do nosso <a href="https://forms.gle/8Zh7MntfZtcph8jw8" target="_blank">Quiz Educativo completo no Google Forms</a>!</p>
+        </section>
+
+        <section id="pesquisas">
+            <h2>Sua Participação É Essencial!</h2>
+            <p>Queremos continuar aprimorando nossas ferramentas e conteúdos. Sua participação em nossas pesquisas é fundamental e nos ajuda a entender melhor os desafios da segurança digital. Os formulários são anônimos e confidenciais.</p>
+            <ul>
+                <li>
+                    <strong>Formulário 1 – Diagnóstico Inicial:</strong> Avalie seu conhecimento sobre segurança digital e nos ajude a mapear os riscos mais frequentes.
+                    <a href="https://forms.gle/47mu3JgyZjDUNB5L9" target="_blank" class="button">Acessar Formulário de Diagnóstico</a>
+                </li>
+                <li>
+                    <strong>Formulário 2 – Quiz Educativo (completo):</strong> Teste seus conhecimentos de forma divertida e receba dicas valiosas ao final de cada pergunta!
+                    <a href="https://forms.gle/8Zh7MntfZtcph8jw8" target="_blank" class="button">Participar do Quiz Educativo Completo</a>
+                </li>
+            </ul>
+            <p><em>Ambos os formulários permanecem abertos para coleta contínua de dados, contribuindo para pesquisas futuras.</em></p>
+        </section>
+
+        <section id="duvidas">
+            <h2>Dúvidas Comuns e Relatos Inspiradores</h2>
+            <p>A escuta ativa da comunidade nos forneceu insights valiosos e reforça a importância do nosso trabalho. Veja algumas das dúvidas e relatos mais frequentes:</p>
+            <ul>
+                <li><strong>"Eu já quase caí num golpe do WhatsApp, ainda bem que perguntei antes de mandar dinheiro."</strong> (Este relato mostra a vulnerabilidade e a importância da segunda opinião antes de agir impulsivamente).</li>
+                <li><strong>"Não sei como faz pra colocar essa verificação em duas etapas, tenho medo de mexer e travar tudo."</strong> (Uma dúvida muito comum sobre configurações de segurança básicas, destacando a necessidade de tutoriais práticos e sem jargões).</li>
+                <li><strong>"Nunca pensei que podia ser perigoso só por clicar num link. Vou prestar mais atenção agora."</strong> (Comentário que demonstra a conscientização gerada sobre riscos que muitos subestimam).</li>
+                <li><strong>"Gostei do quiz, as dicas foram bem claras."</strong> (Feedback positivo que valida a eficácia de formatos interativos e acessíveis).</li>
+            </ul>
+            <p>Essas experiências nos guiam na criação de conteúdos ainda mais relevantes e compreensíveis para todos.</p>
+        </section>
+
+        <section id="links-uteis">
+            <h2>Links Úteis e Recursos Adicionais</h2>
+            <p>Para complementar seu aprendizado e se manter sempre atualizado, selecionamos alguns links de fontes confiáveis sobre segurança digital e cidadania na internet:</p>
+            <ul>
+                <li>
+                    <a href="https://cartilha.cert.br/" target="_blank">**Cartilha de Segurança para Internet (CERT.br)**</a>
+                    <p>Guia completo e constantemente atualizado com as melhores práticas para navegar com segurança, manter seus dados protegidos e evitar golpes.</p>
+                </li>
+                <li>
+                    <a href="https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes" target="_blank">**Dicas Contra Fraudes (Anatel)**</a>
+                    <p>A Agência Nacional de Telecomunicações (Anatel) reúne informações e alertas sobre fraudes e golpes, com dicas de segurança e privacidade digital.</p>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/playlist?list=PLtH60_oA534yG-5m309l6bB6S61R-4s" target="_blank">**Segurança Digital: dicas para proteger seus dados! (CanalJMS - Playlist)**</a>
+                    <p>Uma playlist de vídeos curtos e didáticos sobre segurança digital, ideal para quem prefere aprender visualmente.</p>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/playlist?list=PLHz_Arekwlmy5Y4wL-sI_0tQ4x2wYV6oN" target="_blank">**Curso de Segurança da Informação (Curso em Vídeo)**</a>
+                    <p>Um curso gratuito e abrangente sobre segurança da informação, com foco em conceitos e práticas essenciais.</p>
+                </li>
+            </ul>
+            <p>Sempre verifique a fonte das informações e procure por portais reconhecidos para garantir a veracidade dos conteúdos.</p>
+        </section>
+
+        <section id="feedback">
+            <h2>Fale Conosco: Deixe seu Feedback e Dúvidas!</h2>
+            <p>Sua opinião é muito importante para nós. Se tiver alguma dúvida, sugestão de conteúdo, ou quiser compartilhar sua experiência, utilize o formulário abaixo.</p>
+
+            <div class="feedback-form">
+                <form id="feedbackForm">
+                    <label for="nome">Nome (opcional):</label>
+                    <input type="text" id="nome" name="nome">
+
+                    <label for="email">E-mail (opcional):</label>
+                    <input type="email" id="email" name="email">
+
+                    <label for="tipoMensagem">Tipo de Mensagem:</label>
+                    <select id="tipoMensagem" name="tipoMensagem">
+                        <option value="duvida">Dúvida</option>
+                        <option value="sugestao">Sugestão</option>
+                        <option value="relato">Relato de Experiência</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                    <br><br>
+
+                    <label for="mensagem">Sua Mensagem (obrigatório):</label>
+                    <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
+
+                    <button type="submit">Enviar Mensagem</button>
+                    <p id="feedbackMessage" style="margin-top: 15px; color: var(--cor-principal); font-weight: bold;"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="contato">
+            <h2>Fique Conectado(a)!</h2>
+            <p>Divulgamos nossos materiais e novidades também via WhatsApp e redes sociais. Siga-nos e fique por dentro das últimas dicas de segurança digital!</p>
+            </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Projeto de Extensão I - Segurança Digital. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript para o quiz
+        const quizQuestions = [
+            {
+                question: "Qual a melhor forma de proteger suas contas online?",
+                options: [
+                    "Usar a mesma senha para todos os sites.",
+                    "Criar senhas fortes e únicas, e ativar a verificação em duas etapas.",
+                    "Anular a senha e usar apenas o e-mail.",
+                    "Compartilhar suas senhas com amigos e familiares de confiança."
+                ],
+                correctAnswer: 1,
+                explanation: "A melhor forma é usar senhas complexas e diferentes para cada serviço, e sempre que possível, ativar a verificação em duas etapas (2FA) para uma camada extra de segurança."
+            },
+            {
+                question: "Você recebeu uma mensagem de um banco pedindo para clicar em um link para atualizar seus dados. O que você deve fazer?",
+                options: [
+                    "Clicar no link imediatamente para não bloquear a conta.",
+                    "Ligar para o banco ou acessar o site oficial digitando o endereço, nunca pelo link da mensagem.",
+                    "Responder à mensagem pedindo mais informações.",
+                    "Ignorar a mensagem, pois bancos nunca pedem dados por mensagem."
+                ],
+                correctAnswer: 1,
+                explanation: "Bancos e instituições legítimas nunca pedem dados sensíveis por links em mensagens ou e-mails. Sempre verifique ligando para o número oficial ou acessando o site digitando o endereço."
+            },
+            {
+                question: "O que é 'phishing'?",
+                options: [
+                    "Um tipo de vírus que rouba fotos do seu celular.",
+                    "Uma técnica de fraude online para roubar dados pessoais ou financeiros, disfarçando-se de entidade confiável.",
+                    "Um aplicativo para editar fotos com filtros.",
+                    "Um novo jogo online muito popular."
+                ],
+                correctAnswer: 1,
+                explanation: "Phishing é uma tentativa de enganar você para que revele informações pessoais, como senhas e números de cartão de crédito, geralmente através de e-mails, mensagens ou sites falsos que se parecem com os verdadeiros."
+            },
+            {
+                question: "Ao receber uma notícia bombástica no WhatsApp, qual a primeira atitude para verificar se é verdadeira?",
+                options: [
+                    "Compartilhar imediatamente com todos os seus contatos.",
+                    "Acreditar, pois se está no WhatsApp é verdade.",
+                    "Pesquisar em fontes confiáveis (grandes portais de notícias, agências de checagem) e verificar se a informação é confirmada.",
+                    "Perguntar a um amigo se ele também recebeu."
+                ],
+                correctAnswer: 2,
+                explanation: "Nunca compartilhe notícias sem verificar. Procure a mesma informação em veículos de imprensa confiáveis ou em sites de checagem de fatos para confirmar a veracidade."
+            },
+            {
+                question: "Por que é importante manter o software (sistema operacional, navegadores) sempre atualizado?",
+                options: [
+                    "Para mudar a cor do sistema.",
+                    "Para garantir que o computador funcione mais rápido.",
+                    "Para corrigir falhas de segurança e melhorar a proteção contra novas ameaças.",
+                    "Para liberar mais espaço no disco rígido."
+                ],
+                correctAnswer: 2,
+                explanation: "As atualizações de software frequentemente incluem 'patches' (correções) para vulnerabilidades de segurança, protegendo seu dispositivo contra ataques recentes."
+            },
+            {
+                question: "Qual o principal risco de clicar em links suspeitos?",
+                options: [
+                    "Aumentar a velocidade da sua internet.",
+                    "Instalar programas maliciosos (malware) ou ser redirecionado para sites falsos.",
+                    "Alterar a cor do seu navegador.",
+                    "Receber notificações de promoções."
+                ],
+                correctAnswer: 1,
+                explanation: "Clicar em links suspeitos pode levar à instalação de vírus ou redirecionar você para páginas falsas, onde seus dados podem ser roubados."
+            },
+            {
+                question: "Para que serve a Verificação em Duas Etapas (2FA)?",
+                options: [
+                    "Para alterar o idioma do seu aplicativo.",
+                    "Para dificultar o acesso à sua conta mesmo que alguém descubra sua senha.",
+                    "Para economizar bateria do celular.",
+                    "Para mudar seu número de telefone."
+                ],
+                correctAnswer: 1,
+                explanation: "A 2FA adiciona uma camada extra de segurança, exigindo um segundo método de verificação (como um código enviado ao celular) além da senha, tornando muito mais difícil o acesso não autorizado."
+            }
+        ];
+
+        let currentQuizQuestions = [];
+        const numberOfQuestions = 2; // Quantas perguntas exibir no quiz
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function loadQuiz() {
+            const quizDiv = document.getElementById('quiz-questions');
+            quizDiv.innerHTML = ''; // Limpa perguntas anteriores
+            document.getElementById('quiz-results').innerHTML = ''; // Limpa resultados
+
+            currentQuizQuestions = shuffleArray([...quizQuestions]).slice(0, numberOfQuestions);
+
+            currentQuizQuestions.forEach((q, index) => {
+                const questionHtml = `
+                    <div class="quiz-question">
+                        ${index + 1}. ${q.question}
+                    </div>
+                    <div class="quiz-options">
+                        ${q.options.map((option, i) => `
+                            <label>
+                                <input type="radio" name="question${index}" value="${i}">
+                                ${option}
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                quizDiv.innerHTML += questionHtml;
+            });
+        }
+
+        function checkQuizAnswers() {
+            let correctCount = 0;
+            let resultsHtml = '';
+            const quizResultsDiv = document.getElementById('quiz-results');
+
+            currentQuizQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                let isCorrect = false;
+                let feedbackClass = 'neutral';
+                let message = '';
+
+                if (selectedOption) {
+                    if (parseInt(selectedOption.value) === q.correctAnswer) {
+                        isCorrect = true;
+                        correctCount++;
+                        feedbackClass = 'correct';
+                        message = 'Correto!';
+                    } else {
+                        feedbackClass = 'incorrect';
+                        message = 'Incorreto.';
+                    }
+                } else {
+                    feedbackClass = 'neutral';
+                    message = 'Você não selecionou uma opção.';
+                }
+
+                resultsHtml += `
+                    <div class="quiz-result ${feedbackClass}">
+                        <strong>Pergunta ${index + 1}:</strong> ${message}
+                        <br>
+                        <strong>Explicação:</strong> ${q.explanation}
+                    </div>
+                `;
+            });
+
+            quizResultsDiv.innerHTML = `<p>Você acertou ${correctCount} de ${numberOfQuestions} perguntas.</p>` + resultsHtml;
+        }
+
+        // Carrega o quiz quando a página é carregada
+        document.addEventListener('DOMContentLoaded', loadQuiz);
+
+
+        // JavaScript para o formulário de feedback (apenas um exemplo de exibição, não armazena dados)
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const tipoMensagem = document.getElementById('tipoMensagem').value;
+            const mensagem = document.getElementById('mensagem').value;
+
+            // Esta é uma simulação. Para realmente coletar os dados, você precisaria:
+            // 1. Integrar com um serviço de terceiros (ex: Formspree, Netlify Forms)
+            // 2. Ou criar um backend próprio para receber e processar os dados.
+            // A maneira mais simples, se não tiver backend, é criar um NOVO Google Form para Feedback.
+
+            document.getElementById('feedbackMessage').innerText = 'Obrigado pelo seu feedback! Sua mensagem foi recebida com sucesso (esta é uma demonstração, os dados não são armazenados neste site).';
+
+            // Limpa o formulário (opcional)
+            document.getElementById('feedbackForm').reset();
+        });
+    </script>
+</body>
+</html>
