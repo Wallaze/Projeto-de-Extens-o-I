@@ -318,19 +318,23 @@
             <p>Para complementar seu aprendizado e se manter sempre atualizado, selecionamos alguns links de fontes confiáveis sobre segurança digital e cidadania na internet:</p>
             <ul>
                 <li>
-                    <a href="https://cartilha.cert.br/" target="_blank">**Cartilha de Segurança para Internet (CERT.br)**</a>
+                    <a href="https://www.linkedin.com/newsletters/newsletter-ciberseguran%25C3%25A7a-7051941591984353281/" target="blank"><strong>Newsletter Cibersegurança (HackerSec no LinkedIn)</strong></a>
+                    <p>Principais notícias de cibersegurança, de HackerSec. Publicada semanalmente.</p>
+                </li>
+                <li>
+                    <a href="https://cartilha.cert.br/" target="_blank"><strong>Cartilha de Segurança para Internet (CERT.br)</strong></a>
                     <p>Guia completo e constantemente atualizado com as melhores práticas para navegar com segurança, manter seus dados protegidos e evitar golpes.</p>
                 </li>
                 <li>
-                    <a href="https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes" target="_blank">**Dicas Contra Fraudes (Anatel)**</a>
+                    <a href="https://www.gov.br/anatel/pt-br/assuntos/dicas-contra-fraudes" target="_blank"><strong>Dicas Contra Fraudes (Anatel)</strong></a>
                     <p>A Agência Nacional de Telecomunicações (Anatel) reúne informações e alertas sobre fraudes e golpes, com dicas de segurança e privacidade digital.</p>
                 </li>
                 <li>
-                    <a href="https://www.youtube.com/playlist?list=PLtH60_oA534yG-5m309l6bB6S61R-4s" target="_blank">**Segurança Digital: dicas para proteger seus dados! (CanalJMS - Playlist)**</a>
+                    <a href="https://www.youtube.com/playlist?list=PLtH60_oA534yG-5m309l6bB6S61R-4s" target="_blank"><strong>Segurança Digital: dicas para proteger seus dados! (CanalJMS - Playlist)</strong></a>
                     <p>Uma playlist de vídeos curtos e didáticos sobre segurança digital, ideal para quem prefere aprender visualmente.</p>
                 </li>
                 <li>
-                    <a href="https://www.youtube.com/playlist?list=PLHz_Arekwlmy5Y4wL-sI_0tQ4x2wYV6oN" target="_blank">**Curso de Segurança da Informação (Curso em Vídeo)**</a>
+                    <a href="https://www.youtube.com/playlist?list=PLHz_Arekwlmy5Y4wL-sI_0tQ4x2wYV6oN" target="_blank"><strong>Curso de Segurança da Informação (Curso em Vídeo)</strong></a>
                     <p>Um curso gratuito e abrangente sobre segurança da informação, com foco em conceitos e práticas essenciais.</p>
                 </li>
             </ul>
@@ -462,10 +466,12 @@
         let currentQuizQuestions = [];
         const numberOfQuestions = 2; // Quantas perguntas exibir no quiz
 
+        // O Algoritmo de Fisher-Yates embaralha os elementos de um array de forma justa
+        // Percorre o array de trás pra frente, trocando cada elemento por outro em posição aleatória
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+                const j = Math.floor(Math.random() * (i + 1)); // Gera um índice aleatório entre 0 e i (inclusive)
+                [array[i], array[j]] = [array[j], array[i]]; // Trocas os elementos nas posições i e j
             }
             return array;
         }
@@ -475,8 +481,11 @@
             quizDiv.innerHTML = ''; // Limpa perguntas anteriores
             document.getElementById('quiz-results').innerHTML = ''; // Limpa resultados
 
+            // Cria uma cópia embaralhada das perguntas e seleciona apenas as 'numberOfQuestions' primeiras
+            // O Algoritmo de Fisher-Yates aplicado no array copiado [...quizQuestions] para não alterar o original
             currentQuizQuestions = shuffleArray([...quizQuestions]).slice(0, numberOfQuestions);
 
+            // Para cada pergunta sorteada, cria o HTML com a pergunta e as opções
             currentQuizQuestions.forEach((q, index) => {
                 const questionHtml = `
                     <div class="quiz-question">
@@ -491,7 +500,7 @@
                         `).join('')}
                     </div>
                 `;
-                quizDiv.innerHTML += questionHtml;
+                quizDiv.innerHTML += questionHtml; // Adiciona o HTML da pergunta ao container principal
             });
         }
 
